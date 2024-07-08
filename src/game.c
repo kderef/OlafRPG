@@ -1,13 +1,14 @@
 #pragma once
 
-#include "core/player.c"
-#include "core/spritesheet.c"
 #include <stdbool.h>
 
-typedef struct Game {
-    bool should_close;
-    Player player;
-} Game;
+#include "game/game.h"
+#include "game/state.h"
+#include "game/menu.c"
+#include "game/rpg.c"
+#include "core/player.c"
+#include "core/spritesheet.c"
+
 
 Game game_new() {
     Game g = {0};
@@ -37,12 +38,17 @@ void game_close(Game* g) {
 void game_update(Game* g) {
     ctx_update();
     g->should_close |= WindowShouldClose();
+
+    switch (g->state) {
+        case GAME_MENU: menu_update(g); break;
+        case GAME_RUNNING: rpg_update(g); break;
+    }
 }
 
 /// Draw the game to the screen (Call Begin- and EndDrawing() with this in between)
 void game_draw(Game* g) {
-    ClearBackground(WHITE);
-
-    player_update(&g->player);
-    player_draw(&g->player);
+    switch (g->state) {
+        case GAME_MENU: menu_draw(g); break;
+        case GAME_RUNNING: rpg_draw(g); break;
+    }
 }
