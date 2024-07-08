@@ -1,14 +1,17 @@
 #pragma once
 
-#include "rl.hh"
+#include "core/player.cc"
+#include "core/spritesheet.cc"
 
 class Game {
     bool should_close = false;
     rl::Window window;
+    Player player;
 
 public:
     Game(int w, int h, const char* title, unsigned flags)
-    : window(w, h, title, flags) {
+    : window(w, h, title, flags),
+    player(20.0, 20.0) {
 
     }
     void update() {
@@ -16,9 +19,10 @@ public:
     }
     void draw() {
         BeginDrawing();
-        ClearBackground(BLACK);
+        ClearBackground(WHITE);
 
-        DrawText("Hello, World!", 100, 100, 30, WHITE);
+        player.update(GetFrameTime());
+        player.draw(100, 100, WHITE);
 
         #if DEBUG
             DrawFPS(10, 10);
