@@ -1,9 +1,9 @@
-CC = g++
+CC = gcc
 CFLAGS = -Iext/raylib/src -Iext/raygui/src -Iext/raylib-cpp/include -Iext/incbin -Lext/raylib/src -lraylib
 RELEASE_FLAGS = -O3 -s -DDEBUG=0
 DEBUG_FLAGS = -O0 -DDEBUG=1 -g
 
-MAIN = ./src/main.cc
+MAIN = ./src/main.c
 BIN = ./bin/OlafRPG
 
 # --- Detect OS
