@@ -11,7 +11,15 @@ int main(void) {
 
     while (!game.should_close) {
         game_update(&game);
+
+        BeginDrawing();
         game_draw(&game);
+
+    #if DEBUG
+        DrawFPS(10, 10);
+    #endif
+
+        EndDrawing();
     }
 
     game_unload(&game);
