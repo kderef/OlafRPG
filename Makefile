@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = 
+CFLAGS = -Iext/raylib/src -Iext/raygui/src -Iext/raylib-cpp/include -Lext/raylib/src -lraylib
 RELEASE_FLAGS = -O3 -s -DDEBUG=0
 DEBUG_FLAGS = -O0 -DDEBUG=1 -g
 
