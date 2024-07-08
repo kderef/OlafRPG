@@ -7,7 +7,7 @@ Work in Progress
 ## How to get it working (Windows)
 
 1. [install Chocolatey](https://chocolatey.org/install)
-2. install the **MinGW-w64** package by running this in an **ADMINISTRATOR!** terminal:
+2. install the **MinGW-w64** package by running this in an **ADMINISTRATOR!** terminal:  
 `choco install mingw`
 - If this fails, check that you have installed chocolatey correctly, try restarting your computer.
 3. To check if **MinGW-w64** installed correctly, open a new terminal and run:  
