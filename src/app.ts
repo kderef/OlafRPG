@@ -1,4 +1,6 @@
-class SimpleGame {
+import * as scene from './scenes/menu';
+
+class Game extends Phaser.Game {
     constructor() {
         const config = {
             title: "Olaf RPG",
@@ -9,12 +11,15 @@ class SimpleGame {
             stableSort: -1,
             parent: document.getElementById("content")! ,
             canvas: document.getElementById("game")! as HTMLCanvasElement,
+            scene: scene.Menu,
         };
 
-        this.game = new Phaser.Game(config)
+        super(config);
     }
 
-    game: Phaser.Game;
+    update() {
+        
+    }
 
     preload() {
         
@@ -22,16 +27,17 @@ class SimpleGame {
 
     create() {
     }
-
 }
-window.onload = () => {
-    var game = new SimpleGame();
 
-    window.onresize(null);
-};
-
-window.onresize = (event) => {
+function resizeCanvas(event) {
     var game = document.getElementById("game") as HTMLCanvasElement;
     game.width = window.innerWidth;
     game.height = window.innerHeight;
+}
+
+window.onload = () => {
+    var game = new Game();
+    resizeCanvas(null);
 };
+
+window.onresize = resizeCanvas;

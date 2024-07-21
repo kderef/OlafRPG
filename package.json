@@ -4,7 +4,8 @@
   "description": "RPG",
   "main": "app.ts",
   "scripts": {
-    "dev": "npx swc app.ts -o app.js"
+    "build-scenes": "npx swc src/app.ts src/scenes/menu.ts -d dist",
+    "dev": "npm run build-scenes"
   },
   "repository": {
     "type": "git",
